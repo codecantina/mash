@@ -1,5 +1,5 @@
-(defproject clojure-getting-started "1.0.0-SNAPSHOT"
-  :description "Demo Clojure web app"
+(defproject news-mash "1.0.0-SNAPSHOT"
+  :description "News-mash web app"
   :url "http://news-mash.herokuapp.com"
   :license {:name "Eclipse Public License v1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
