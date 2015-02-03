@@ -1,4 +1,4 @@
-(ns clojure-getting-started.web
+(ns news-mash.web
   (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
@@ -9,7 +9,7 @@
 (defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
-   :body (pr-str ["Hello" :from 'dropbox])})
+   :body (pr-str ["Hello" :from 'DB])})
 
 (defroutes app
   (GET "/" []
