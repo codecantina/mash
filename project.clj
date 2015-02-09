@@ -12,8 +12,7 @@
   :plugins [[environ/environ.lein "0.2.1"]
             [lein-ring "0.8.12"]]
 
-    :ring {:handler clojure-getting-started.web/handler
-           }
+    :ring {:handler clojure-getting-started.web/app-routes}
 
 
   :hooks [environ.leiningen.hooks]
@@ -21,5 +20,5 @@
   :profiles {:production {:env {:production true}}}
 
   ;;added main to allow for lein run
-   :main clojure-getting-started.web
+   ;;:main clojure-getting-started.web
   )
