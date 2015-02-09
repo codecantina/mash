@@ -9,7 +9,7 @@
 (defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
-   :body (pr-str ["Hello" :from 'newsNLP])})
+   :body (pr-str ["Hello" :from 'newsNLPruntrmpstopstart])})
 
 (defroutes app
   (GET "/" []
@@ -22,5 +22,11 @@
     (jetty/run-jetty (site #'app) {:port port :join? false})))
 
 ;; For interactive development:
-;; (.stop server)
-;; (def server (-main))
+;;(.stop server)
+;;(def server (-main))
+
+
+(defn handler [request]
+  {:status 200
+   :headers {"Content-Type" "text/plain"}
+   :body "Hello Ring! Am I reloadable?!"})

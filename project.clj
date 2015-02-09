@@ -9,7 +9,17 @@
                  [environ "0.5.0"]
                  [clojure-opennlp "0.3.3"]]
   :min-lein-version "2.0.0"
-  :plugins [[environ/environ.lein "0.2.1"]]
+  :plugins [[environ/environ.lein "0.2.1"]
+            [lein-ring "0.8.12"]]
+
+    :ring {:handler clojure-getting-started.web/handler
+           }
+
+
   :hooks [environ.leiningen.hooks]
   :uberjar-name "clojure-getting-started-standalone.jar"
-  :profiles {:production {:env {:production true}}})
+  :profiles {:production {:env {:production true}}}
+
+  ;;added main to allow for lein run
+   :main clojure-getting-started.web
+  )
