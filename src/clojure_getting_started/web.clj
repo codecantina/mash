@@ -9,7 +9,7 @@
 (defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
-   :body (pr-str ["Hello" :from 'newsNLPruntrmpstopstart])})
+   :body (pr-str ["Hello" :from 'newsNLPring])})
 
 (defroutes app
   (GET "/" []
