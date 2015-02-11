@@ -19,7 +19,6 @@
 
   :source-paths ["src" "target/classes"]
 
-  :clean-targets ["resources/public/out/om_tut" "resources/public/out/om_tut.js"]
 
     :ring {:handler clojure-getting-started.web/app-routes}
 
