@@ -36,9 +36,6 @@
   (GET "/" []
        (index-page))
 
-  (GET "/hi" []
-       (hi 'hello))
-
   (GET "/tools" []
        (tools))
   )
