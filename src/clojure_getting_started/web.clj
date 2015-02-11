@@ -1,40 +1,58 @@
 (ns clojure-getting-started.web
-  (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
-            [compojure.handler :refer [site]]
+
+  (:use
+        [hiccup.middleware :only (wrap-base-url)])
+
+  (:require
+            [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.route :as route]
+            [compojure.handler :as handler]
+            [compojure.response :as response]
+
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
             [environ.core :refer [env]]
             [clojure-getting-started.tools]
             [clojure-getting-started.splash]
+            [hiccup
+              [page :refer [html5]]
+              [page :refer [include-js]]]
+            [hiccup.middleware :only (wrap-base-url)]
             ))
 
 
 
-
-(defn hi [request]
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Hello Ring! Hi I'm reloadable!"})
-
-
-
+(defn index-page []
+  (html5
+    [:head
+      [:title "Hello World"]
+      (include-js "js/main.js")]
+    [:body
+      [:h1 "Hello from newsmash!"]]))
 
 
 
 (defroutes app-routes
   (GET "/" []
-       (splash))
+       (index-page))
 
   (GET "/hi" []
        (hi 'hello))
 
   (GET "/tools" []
        (tools))
+  )
 
 
-  (ANY "*" []
-       (route/not-found (slurp (io/resource "404.html")))))
+
+(defroutes main-routes
+  (GET "/" [] (index-page))
+  (route/resources "/")
+  (route/not-found "Page not found"))
+
+(def app-routes
+  (-> (handler/site main-routes)
+      (wrap-base-url)))
 
 
 
