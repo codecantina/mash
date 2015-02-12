@@ -27,16 +27,12 @@
   :uberjar-name "clojure-getting-started-standalone.jar"
   :profiles {:production {:env {:production true}}}
 
-  ;;added main to allow for lein run
-   ;;:main clojure-getting-started.web
-
-
   :cljsbuild {
     :builds [{:id "om-tut"
               :source-paths ["src"]
               :compiler {
                 :output-to "resources/public/out/om_tut.js"
-                :output-dir "out"
+                :output-dir "resources/public/out/"
                 :optimizations :none
                 :cache-analysis true
                 :source-map true}}]})
