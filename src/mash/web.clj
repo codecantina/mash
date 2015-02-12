@@ -1,4 +1,4 @@
-(ns clojure-getting-started.web
+(ns mash.web
 
   (:use
         [hiccup.middleware :only (wrap-base-url)])
@@ -8,12 +8,12 @@
             [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
+            [compojure.handler :refer [site]]
 
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
             [ring.util.response :refer [resource-response response]]
             [environ.core :refer [env]]
-            [clojure-getting-started.tools]
 
             [hiccup.middleware :only (wrap-base-url)]
             ))

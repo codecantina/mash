@@ -19,12 +19,11 @@
 
   :source-paths ["src" "target/classes"]
 
-
-    :ring {:handler clojure-getting-started.web/app-routes}
+  :ring {:handler mash.web/app-routes}
 
 
   :hooks [environ.leiningen.hooks]
-  :uberjar-name "clojure-getting-started-standalone.jar"
+  :uberjar-name "mash-standalone.jar"
   :profiles {:production {:env {:production true}}}
 
   :cljsbuild {
