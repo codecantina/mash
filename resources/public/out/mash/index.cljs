@@ -1,4 +1,4 @@
-(ns index )
+(ns mash.index )
 
 
 

@@ -10,31 +10,60 @@
             [compojure.response :as response]
             [compojure.handler :refer [site]]
 
+            [feedparser-clj.core :as rss]
+
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
             [ring.util.response :refer [resource-response response]]
             [environ.core :refer [env]]
 
+            [mash.rsstools :as rsstools]
+            [mash.socal :as socal]
+            [mash.synsets :as synsets]
+
             [hiccup.middleware :only (wrap-base-url)]
+            [hiccup.core :refer [html]]
             ))
 
+
+
+;;---------------------------------------------------------------------
+;; Routes
 
 (defroutes main-routes
   ;; Serve from resources/public/index.html as default welcome page
   (GET  "/" [] (resource-response "index.html" {:root "public"}))
   ;; Serve any other files from resources/public/
   (route/resources "/")
+
+  ;; CLJ Paths
+  (GET "/rsstools" [] (rsstools/page))
+  (GET "/socal" [] (socal/page))
+  (GET "/synsets" [] (synsets/page))
+
   ;;page not found
   (route/not-found "Page not found"))
 
 
-(def app-routes
+(def app
   (-> (handler/site main-routes)
       (wrap-base-url)))
 
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 5000))]
-    (jetty/run-jetty (site #'app-routes) {:port port :join? false})))
+    (jetty/run-jetty (site #'app) {:port port :join? false})))
+
+
+;;---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 
