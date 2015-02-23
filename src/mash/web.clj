@@ -3,6 +3,8 @@
   (:use
         [hiccup.middleware :only (wrap-base-url)])
 
+
+
   (:require
             [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.route :as route]
@@ -15,14 +17,19 @@
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
             [ring.util.response :refer [resource-response response]]
+;;            [ring.middleware.params :refer [wrap-params]]
+
             [environ.core :refer [env]]
 
             [mash.rsstools :as rsstools]
             [mash.socal :as socal]
             [mash.synsets :as synsets]
+            [mash.form :as form]
 
             [hiccup.middleware :only (wrap-base-url)]
-            [hiccup.core :refer [html]]
+            ;;[hiccup.core :refer [html]]
+
+
             ))
 
 
@@ -40,6 +47,9 @@
   (GET "/rsstools" [] (rsstools/page))
   (GET "/socal" [] (socal/page))
   (GET "/synsets" [] (synsets/page))
+  (GET "/form" [] (form/page ))
+  ;;(GET "/form" [params] (form/page params))
+  (POST "/form" {params :params} (form/page params))
 
   ;;page not found
   (route/not-found "Page not found"))

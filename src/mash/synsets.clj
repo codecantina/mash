@@ -1,13 +1,10 @@
-(ns mash.synsets)
+(ns mash.synsets
+  (:require
+            [mash.enlive :as enlive-utils])
+    )
 
 
-;;---------------------------------------------------------------------
-;; page
-
-(defn page []
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body (pr-str "synsets")
-   })
+(defn page [] (enlive-utils/render-to-response
+                         (enlive-utils/template {:message "Synsets!"})))
 
 

@@ -6,8 +6,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
 
-                 [ring/ring-jetty-adapter "1.2.2"]
-                 [ring/ring-core "1.3.2"]
+                 [ring "1.3.2"]
+
 
                  [environ "0.5.0"]
                  [clojure-opennlp "0.3.3"]
@@ -15,6 +15,8 @@
                  [org.clojure/clojurescript "0.0-2725"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [org.omcljs/om "0.8.4"]
+
+                 [enlive "1.1.5"]
 
                  [hiccup "1.0.5"]
                  [org.clojars.scsibug/feedparser-clj "0.4.0"]]

@@ -1,11 +1,11 @@
-(ns mash.socal)
+(ns mash.socal
+  (:require
+            [mash.enlive :as enlive-utils])
+    )
 
 
-;;---------------------------------------------------------------------
-;; page
+(defn page [] (enlive-utils/render-to-response
+                         (enlive-utils/template {:message "SO-CAL!"})))
 
-(defn page []
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body (pr-str "socal")
-   })
+
+
