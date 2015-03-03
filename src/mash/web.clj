@@ -17,18 +17,17 @@
             [clojure.java.io :as io]
             [ring.adapter.jetty :as jetty]
             [ring.util.response :refer [resource-response response]]
-;;            [ring.middleware.params :refer [wrap-params]]
 
             [environ.core :refer [env]]
 
             [mash.rsstools :as rsstools]
             [mash.socal :as socal]
-            [mash.synsets :as synsets]
             [mash.form :as form]
+            [mash.opennlp :as opennlp]
+            [mash.sodict :as sodict]
 
             [hiccup.middleware :only (wrap-base-url)]
             ;;[hiccup.core :refer [html]]
-
 
             ))
 
@@ -45,11 +44,17 @@
 
   ;; CLJ Paths
   (GET "/rsstools" [] (rsstools/page))
-  (GET "/socal" [] (socal/page))
-  (GET "/synsets" [] (synsets/page))
+
+  (GET "/sodict" [] (sodict/page ))
+
   (GET "/form" [] (form/page ))
-  ;;(GET "/form" [params] (form/page params))
   (POST "/form" {params :params} (form/page params))
+
+  (GET "/opennlp" [] (opennlp/page ))
+  (POST "/opennlp" {params :params} (opennlp/page params))
+
+  (GET "/socal" [] (socal/page))
+  (POST "/socal" {params :params} (socal/page params))
 
   ;;page not found
   (route/not-found "Page not found"))

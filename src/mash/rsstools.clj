@@ -4,25 +4,20 @@
    [mash.enlive :as enlive-utils]
    ))
 
+(defn rsspage []
+    (str
+      "<br/><br/>"
+      "<h3>Reading an RSS Feed: (WIRED RSS)</h3>"
+      "<br/><br/>"
+      (rss/parse-feed "http://feeds.wired.com/wired/index")
 
+
+    )
+  )
 
 
 (defn page [] (enlive-utils/render-to-response
-                         (enlive-utils/template {:message (rss/parse-feed "http://feeds.wired.com/wired/index")})))
+                         (enlive-utils/template {:message (rsspage) })))
 
-
-
-
-
-
-;;---------------------------------------------------------------------
-;; page
-
-;;(defn page []
-  ;;{:status 200
-   ;;:headers {"Content-Type" "application/edn"}
-   ;;:headers {"Content-Type" "text/plain"}
-   ;;:body (pr-str (rss/parse-feed "http://feeds.wired.com/wired/index"))
-   ;;})
 
 
